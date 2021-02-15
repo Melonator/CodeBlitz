@@ -1,0 +1,291 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Assets/Jeebz-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Levels/ClassSelect.cs" type="Script" id=2]
+[ext_resource path="res://Assets/UI/Stone Pillar.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Ok Button Pressed.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Menu Art 2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/Ok Button.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Ok Button Hovered.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/Yellow Alert.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/Red Alert.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sounds/Select.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Assets/UI/Class Select.png" type="Texture" id=11]
+[ext_resource path="res://Levels/UI/Buttons/Archer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/UI/Buttons/Knight.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/UI/Buttons/Tank.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/UI/Buttons/Wizard.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Levels/UI/Buttons/Basic.tscn" type="PackedScene" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 7
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade In"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Fade Out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Red Alert:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1.3, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 148.806, -1.97753 ), Vector2( 148.806, 97.941 ), Vector2( 148.806, 97.941 ), Vector2( 148.806, -2.059 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Yellow Alert:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.7, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 148.798, -2.05885 ), Vector2( 148.798, 97.9411 ), Vector2( 148.798, 97.9411 ), Vector2( 148.798, -2.05885 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.396851
+margin_right = 0.396851
+rect_pivot_offset = Vector2( 84.553, 55.5833 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -0.396851
+margin_right = 304.603
+margin_bottom = 172.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Classes" type="Control" parent="."]
+margin_left = 22.6031
+margin_top = 18.0
+margin_right = 278.603
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Class Select" type="Sprite" parent="Classes"]
+position = Vector2( 120.499, 8.449 )
+texture = ExtResource( 11 )
+
+[node name="Basic" parent="Classes" instance=ExtResource( 16 )]
+margin_left = 83.0
+margin_top = 18.0
+margin_right = 94.0
+margin_bottom = 29.0
+
+[node name="Archer" parent="Classes" instance=ExtResource( 12 )]
+margin_left = 99.1571
+margin_top = 18.0592
+margin_right = 110.157
+margin_bottom = 29.0592
+
+[node name="Wizard" parent="Classes" instance=ExtResource( 15 )]
+margin_left = 114.728
+margin_top = 17.7001
+margin_right = 125.728
+margin_bottom = 28.7001
+
+[node name="Tank" parent="Classes" instance=ExtResource( 14 )]
+margin_left = 131.054
+margin_top = 18.0268
+margin_right = 142.054
+margin_bottom = 29.0268
+
+[node name="Knight" parent="Classes" instance=ExtResource( 13 )]
+margin_left = 147.369
+margin_top = 17.7684
+margin_right = 158.369
+margin_bottom = 28.7684
+
+[node name="Players" type="Control" parent="."]
+margin_left = 100.986
+margin_top = 68.3671
+margin_right = 185.986
+margin_bottom = 139.367
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu Sprite" type="Sprite" parent="Players"]
+position = Vector2( 43, 35 )
+texture = ExtResource( 5 )
+
+[node name="1" type="Position2D" parent="Players"]
+position = Vector2( 13.5182, -1.48885 )
+
+[node name="2" type="Position2D" parent="Players"]
+position = Vector2( 29.4948, -1.47851 )
+
+[node name="3" type="Position2D" parent="Players"]
+position = Vector2( 45.5317, -1.44563 )
+
+[node name="4" type="Position2D" parent="Players"]
+position = Vector2( 61.4931, -1.49766 )
+
+[node name="ClassLabel" type="Label" parent="Players"]
+margin_left = 40.2281
+margin_top = 14.8173
+margin_right = 80.2281
+margin_bottom = 28.8173
+custom_fonts/font = SubResource( 1 )
+text = "knight"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthLabel" type="Label" parent="Players"]
+margin_left = 20.582
+margin_top = 18.3788
+margin_right = 46.582
+margin_bottom = 28.3788
+rect_scale = Vector2( 0.45, 0.45 )
+custom_fonts/font = SubResource( 2 )
+text = "20"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DamageLabel" type="Label" parent="Players"]
+margin_left = 21.0278
+margin_top = 27.2302
+margin_right = 47.0278
+margin_bottom = 37.2302
+rect_scale = Vector2( 0.45, 0.45 )
+custom_fonts/font = SubResource( 2 )
+text = "20"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionLabel" type="Label" parent="Players"]
+margin_left = 7.75214
+margin_top = 33.2519
+margin_right = 66.7521
+margin_bottom = 66.2519
+rect_min_size = Vector2( 58, 33 )
+rect_scale = Vector2( 0.45, 0.45 )
+custom_fonts/font = SubResource( 2 )
+text = "An all arounder"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassSprite" type="Position2D" parent="Players"]
+position = Vector2( 45.5138, 30.3386 )
+
+[node name="Ok Button" type="TextureButton" parent="Players"]
+margin_left = 38.1798
+margin_top = 40.6071
+margin_right = 86.1798
+margin_bottom = 72.6071
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 7 )
+texture_disabled = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stone Pillar" type="Sprite" parent="."]
+position = Vector2( 24.8652, 92.7559 )
+texture = ExtResource( 3 )
+
+[node name="Stone Pillar2" type="Sprite" parent="."]
+position = Vector2( 278.726, 92.0639 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="Yellow Alert" type="Sprite" parent="."]
+position = Vector2( 148.798, -2.05885 )
+texture = ExtResource( 8 )
+
+[node name="Red Alert" type="Sprite" parent="."]
+position = Vector2( 148.806, -1.97753 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Fade In" = SubResource( 3 )
+"anims/Fade Out" = SubResource( 4 )
+"anims/Red Alert" = SubResource( 5 )
+"anims/Yellow Alert" = SubResource( 6 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -0.396851
+margin_right = 304.603
+margin_bottom = 172.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+[connection signal="mouse_entered" from="Classes/Basic" to="Players" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Classes/Basic" to="Players" method="_on_Basic_pressed"]
+[connection signal="mouse_entered" from="Classes/Archer" to="Players" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Classes/Archer" to="Players" method="_on_Archer_pressed"]
+[connection signal="mouse_entered" from="Classes/Wizard" to="Players" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Classes/Wizard" to="Players" method="_on_Wizard_pressed"]
+[connection signal="mouse_entered" from="Classes/Tank" to="Players" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Classes/Tank" to="Players" method="_on_Tank_pressed"]
+[connection signal="mouse_entered" from="Classes/Knight" to="Players" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Classes/Knight" to="Players" method="_on_Knight_pressed"]
+[connection signal="mouse_entered" from="Players/Ok Button" to="Players" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Players/Ok Button" to="Players" method="_on_Ok_Button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="Players" method="_on_AnimationPlayer_finished"]

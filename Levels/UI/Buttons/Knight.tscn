@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/UI/Knight Logo Hovered.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Knight Logo Selected.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/Knight Logo.png" type="Texture" id=3]
+
+[node name="Knight" type="TextureButton"]
+margin_left = -0.317032
+margin_top = 0.163071
+margin_right = 10.683
+margin_bottom = 11.1631
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

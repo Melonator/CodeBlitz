@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Levels/MainMenu.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Jeebz-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Sounds/Explosion.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/Start.ogg" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 1
+outline_color = Color( 0.592157, 0.0117647, 0.0117647, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade Out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 0.396851
+margin_top = 0.396851
+margin_right = 303.397
+margin_bottom = 171.397
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -24.0
+margin_top = 17.0
+margin_right = 24.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+text = "Code"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.5
+margin_top = 38.0
+margin_right = 20.5
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 1 )
+text = "Blitz"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -93.0
+margin_top = -9.5
+margin_right = 93.0
+margin_bottom = 9.5
+custom_fonts/font = SubResource( 2 )
+text = "Press Enter to Start..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="StartPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="MenuTimer" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="StartTimer2" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 0.396851
+margin_top = 0.396851
+margin_right = 303.397
+margin_bottom = 171.397
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Fade Out" = SubResource( 3 )
+[connection signal="timeout" from="MenuTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="StartTimer2" to="." method="_on_StartTimer2_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]

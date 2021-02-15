@@ -1,0 +1,677 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Levels/ArenaManager.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Tiles/ObstacleTile.png" type="Texture" id=2]
+[ext_resource path="res://Levels/WorldManager.cs" type="Script" id=3]
+[ext_resource path="res://Levels/UI/Troop List.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/tilesets/TileSet.tres" type="TileSet" id=5]
+[ext_resource path="res://Levels/Highlight.tres" type="TileSet" id=6]
+[ext_resource path="res://Levels/PlayerHighlight.cs" type="Script" id=7]
+[ext_resource path="res://Levels/Highlight.cs" type="Script" id=8]
+[ext_resource path="res://Assets/Tiles/ActorTile.png" type="Texture" id=9]
+[ext_resource path="res://Levels/UI/MainUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/UI/BasicRed.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Sounds/Explosion.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/UI/Yellow Alert.png" type="Texture" id=13]
+[ext_resource path="res://Assets/UI/Red Alert.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Jeebz-Regular.ttf" type="DynamicFontData" id=15]
+
+[sub_resource type="TileSet" id=1]
+1/name = "ObstacleTile.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 1, 5, 17, 10 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "ActorTile.png 2"
+2/texture = ExtResource( 9 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 1, 5, 17, 9 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 6
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 5
+font_data = ExtResource( 15 )
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Red Alert:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 148.806, -3.059 ), Vector2( 148.806, 97.941 ), Vector2( 148.806, 97.941 ), Vector2( 148.806, -3.059 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Yellow Alert:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 148.798, -2.05885 ), Vector2( 148.798, 97.941 ), Vector2( 148.798, 97.941 ), Vector2( 148.798, -2.05885 ) ]
+}
+
+[node name="Arena" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -0.319141 ]
+}
+
+[node name="Sprites" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 8 )
+compatibility_mode = true
+format = 1
+tile_data = PoolIntArray( -327666, 16, 0, -327665, 16, 0, -327664, 16, 0, -327663, 19, 0, -327662, 19, 0, -327661, 19, 0, -327660, 19, 0, -327659, 19, 0, -327658, 19, 0, -327657, 20, 0, -327656, 20, 0, -327655, 20, 0, -327654, 7, 0, -327653, 4, 0, -327652, 6, 0, -327651, 4, 0, -262130, 16, 0, -262129, 16, 0, -262128, 17, 0, -262127, 19, 0, -262126, 18, 0, -262125, 17, 0, -262124, 19, 0, -262123, 19, 0, -262122, 19, 0, -262121, 20, 0, -262120, 20, 0, -262119, 20, 0, -262118, 4, 0, -262117, 4, 0, -262116, 4, 0, -262115, 4, 0, -196594, 16, 0, -196593, 17, 0, -196592, 19, 0, -196591, 19, 0, -196590, 19, 0, -196589, 19, 0, -196588, 19, 0, -196587, 19, 0, -196586, 19, 0, -196585, 20, 0, -196584, 20, 0, -196583, 20, 0, -196582, 7, 0, -196581, 4, 0, -196580, 4, 0, -196579, 4, 0, -131058, 19, 0, -131057, 19, 0, -131056, 19, 0, -131055, 19, 0, -131054, 19, 0, -131053, 19, 0, -131052, 19, 0, -131051, 19, 0, -131050, 19, 0, -131049, 20, 0, -131048, 20, 0, -131047, 20, 0, -131046, 7, 0, -131045, 4, 0, -131044, 6, 0, -131043, 4, 0, -65522, 19, 0, -65521, 19, 0, -65520, 19, 0, -65519, 19, 0, -65518, 19, 0, -65517, 19, 0, -65516, 19, 0, -65515, 17, 0, -65514, 19, 0, -65513, 20, 0, -65512, 20, 0, -65511, 20, 0, -65510, 4, 0, -65509, 4, 0, -65508, 4, 0, -65507, 4, 0, 14, 19, 0, 15, 18, 0, 16, 19, 0, 17, 19, 0, 18, 19, 0, 19, 17, 0, 20, 19, 0, 21, 19, 0, 22, 19, 0, 23, 20, 0, 24, 20, 0, 25, 20, 0, 26, 7, 0, 27, 4, 0, 28, 4, 0, 29, 4, 0, 65550, 19, 0, 65551, 17, 0, 65552, 19, 0, 65553, 19, 0, 65554, 17, 0, 65555, 18, 0, 65556, 19, 0, 65557, 19, 0, 65558, 19, 0, 65559, 20, 0, 65560, 20, 0, 65561, 4, 0, 65562, 4, 0, 65563, 4, 0, 65564, 4, 0, 65565, 6, 0, 131086, 19, 0, 131087, 19, 0, 131088, 19, 0, 131089, 19, 0, 131090, 19, 0, 131091, 19, 0, 131092, 19, 0, 131093, 19, 0, 131094, 19, 0, 131095, 20, 0, 131096, 4, 0, 131097, 4, 0, 131098, 6, 0, 131099, 4, 0, 131100, 4, 0, 131101, 4, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 14, 0, 196631, 12, 0, 196632, 12, 0, 196633, 15, 0, 196634, 15, 0, 196635, 15, 0, 196636, 15, 0, 196637, 15, 0, 262158, 3, 0, 262159, 3, 0, 262160, 3, 0, 262161, 3, 0, 262162, 3, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 12, 0, 262167, 12, 0, 262168, 12, 0, 262169, 15, 0, 262170, 15, 0, 262171, 15, 0, 262172, 15, 0, 262173, 15, 0, 327694, 20, 0, 327695, 20, 0, 327696, 20, 0, 327697, 20, 0, 327698, 20, 0, 327699, 20, 0, 327700, 0, 0, 327701, 0, 0, 327702, 14, 0, 327703, 12, 0, 327704, 12, 0, 327705, 12, 0, 327706, 12, 0, 327707, 12, 0, 327708, 12, 0, 327709, 12, 0, 393230, 20, 0, 393231, 20, 0, 393232, 20, 0, 393233, 20, 0, 393234, 20, 0, 393235, 2, 0, 393236, 0, 0, 393237, 0, 0, 393238, 14, 0, 393239, 12, 0, 393240, 12, 0, 393241, 12, 0, 393242, 12, 0, 393243, 12, 0, 393244, 12, 0, 393245, 12, 0, 458766, 2, 0, 458767, 0, 0, 458768, 2, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 12, 0, 458775, 12, 0, 458776, 14, 0, 458777, 12, 0, 458778, 12, 0, 458779, 12, 0, 458780, 12, 0, 458781, 12, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 12, 0, 524311, 12, 0, 524312, 12, 0, 524313, 12, 0, 524314, 12, 0, 524315, 12, 0, 524316, 12, 0, 524317, 12, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 12, 0, 589847, 12, 0, 589848, 12, 0, 589849, 12, 0, 589850, 12, 0, 589851, 12, 0, 589852, 14, 0, 589853, 12, 0, 655374, 2, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 2, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 12, 0, 655383, 12, 0, 655384, 14, 0, 655385, 12, 0, 655386, 12, 0, 655387, 12, 0, 655388, 12, 0, 655389, 12, 0 )
+
+[node name="WorldHighlight" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 8 )
+format = 1
+script = ExtResource( 8 )
+
+[node name="PlayerHighlight" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 8 )
+format = 1
+script = ExtResource( 7 )
+
+[node name="World" type="TileMap" parent="."]
+visible = false
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 8 )
+format = 1
+tile_data = PoolIntArray( -393203, 1, 0, -393202, 1, 0, -393201, 1, 0, -393200, 1, 0, -393199, 1, 0, -393198, 1, 0, -393197, 1, 0, -393196, 1, 0, -393195, 1, 0, -393194, 1, 0, -393193, 1, 0, -393192, 1, 0, -393191, 1, 0, -393190, 1, 0, -393189, 1, 0, -393188, 1, 0, -393187, 1, 0, -393186, 1, 0, -327667, 1, 0, -327666, 1, 0, -327665, 1, 0, -327664, 1, 0, -327657, 1, 0, -327656, 1, 0, -327655, 1, 0, -327654, 1, 0, -327650, 1, 0, -262131, 1, 0, -262130, 1, 0, -262129, 1, 0, -262126, 1, 0, -262121, 1, 0, -262120, 1, 0, -262119, 1, 0, -262114, 1, 0, -196595, 1, 0, -196594, 1, 0, -196585, 1, 0, -196584, 1, 0, -196583, 1, 0, -196582, 1, 0, -196578, 1, 0, -131059, 1, 0, -131049, 1, 0, -131048, 1, 0, -131047, 1, 0, -131046, 1, 0, -131042, 1, 0, -65523, 1, 0, -65513, 1, 0, -65512, 1, 0, -65511, 1, 0, -65506, 1, 0, 13, 1, 0, 15, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 30, 1, 0, 65549, 1, 0, 65555, 1, 0, 65559, 1, 0, 65560, 1, 0, 65566, 1, 0, 131085, 1, 0, 131095, 1, 0, 131102, 1, 0, 196621, 1, 0, 196630, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 1, 0, 196636, 1, 0, 196637, 1, 0, 196638, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262169, 1, 0, 262170, 1, 0, 262171, 1, 0, 262172, 1, 0, 262173, 1, 0, 262174, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 1, 0, 327697, 1, 0, 327698, 1, 0, 327699, 1, 0, 327702, 1, 0, 327710, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393238, 1, 0, 393246, 1, 0, 458765, 1, 0, 458766, 1, 0, 458768, 1, 0, 458776, 1, 0, 458782, 1, 0, 524301, 1, 0, 524318, 1, 0, 589837, 1, 0, 589852, 1, 0, 589854, 1, 0, 655373, 1, 0, 655374, 1, 0, 655378, 1, 0, 655384, 1, 0, 655390, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 1, 0, 720917, 1, 0, 720918, 1, 0, 720919, 1, 0, 720920, 1, 0, 720921, 1, 0, 720922, 1, 0, 720923, 1, 0, 720924, 1, 0, 720925, 1, 0, 720926, 1, 0 )
+script = ExtResource( 3 )
+
+[node name="Yellow Team" type="Node2D" parent="."]
+
+[node name="Red Team" type="Node2D" parent="."]
+
+[node name="Screen" parent="." instance=ExtResource( 10 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Troop List" parent="Screen" instance=ExtResource( 4 )]
+
+[node name="TroopDisplay" parent="Screen" instance=ExtResource( 11 )]
+visible = false
+
+[node name="Labels" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Label" parent="Labels"]
+margin_left = 22.1925
+margin_top = 91.5784
+margin_right = 33.1925
+margin_bottom = 132.578
+custom_fonts/font = SubResource( 2 )
+text = "a
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Label" parent="Labels"]
+margin_left = 30.6114
+margin_top = 96.1607
+margin_right = 41.6114
+margin_bottom = 137.161
+custom_fonts/font = SubResource( 2 )
+text = "b
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Label" parent="Labels"]
+margin_left = 38.518
+margin_top = 100.1
+margin_right = 49.518
+margin_bottom = 141.1
+custom_fonts/font = SubResource( 2 )
+text = "c
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4" type="Label" parent="Labels"]
+margin_left = 47.3414
+margin_top = 97.7662
+margin_right = 58.3414
+margin_bottom = 138.766
+custom_fonts/font = SubResource( 2 )
+text = "e"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="5" type="Label" parent="Labels"]
+margin_left = 53.8652
+margin_top = 102.537
+margin_right = 64.8652
+margin_bottom = 143.537
+custom_fonts/font = SubResource( 2 )
+text = "f"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="6" type="Label" parent="Labels"]
+margin_left = 62.3379
+margin_top = 105.297
+margin_right = 73.3379
+margin_bottom = 146.297
+custom_fonts/font = SubResource( 2 )
+text = "g"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="7" type="Label" parent="Labels"]
+margin_left = 71.1095
+margin_top = 110.402
+margin_right = 82.1095
+margin_bottom = 151.402
+custom_fonts/font = SubResource( 2 )
+text = "h"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="8" type="Label" parent="Labels"]
+margin_left = 78.2286
+margin_top = 114.882
+margin_right = 89.2286
+margin_bottom = 155.882
+custom_fonts/font = SubResource( 2 )
+text = "i"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="9" type="Label" parent="Labels"]
+margin_left = 85.2728
+margin_top = 118.247
+margin_right = 96.2728
+margin_bottom = 159.247
+custom_fonts/font = SubResource( 2 )
+text = "j"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="10" type="Label" parent="Labels"]
+margin_left = 94.6894
+margin_top = 122.078
+margin_right = 105.689
+margin_bottom = 163.078
+custom_fonts/font = SubResource( 2 )
+text = "k"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="11" type="Label" parent="Labels"]
+margin_left = 101.9
+margin_top = 126.573
+margin_right = 112.9
+margin_bottom = 167.573
+custom_fonts/font = SubResource( 2 )
+text = "l"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="12" type="Label" parent="Labels"]
+margin_left = 110.422
+margin_top = 130.352
+margin_right = 121.422
+margin_bottom = 171.352
+custom_fonts/font = SubResource( 2 )
+text = "m"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="13" type="Label" parent="Labels"]
+margin_left = 118.662
+margin_top = 133.877
+margin_right = 129.662
+margin_bottom = 174.877
+custom_fonts/font = SubResource( 2 )
+text = "n"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="14" type="Label" parent="Labels"]
+margin_left = 126.341
+margin_top = 137.623
+margin_right = 137.341
+margin_bottom = 178.623
+custom_fonts/font = SubResource( 2 )
+text = "o"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="15" type="Label" parent="Labels"]
+margin_left = 134.301
+margin_top = 140.807
+margin_right = 145.301
+margin_bottom = 181.807
+custom_fonts/font = SubResource( 2 )
+text = "p"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="16" type="Label" parent="Labels"]
+margin_left = 142.208
+margin_top = 145.038
+margin_right = 153.208
+margin_bottom = 186.038
+custom_fonts/font = SubResource( 2 )
+text = "q"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="17" type="Label" parent="Labels"]
+margin_left = 275.639
+margin_top = 103.778
+margin_right = 278.639
+margin_bottom = 124.778
+custom_fonts/font = SubResource( 3 )
+text = "1
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="18" type="Label" parent="Labels"]
+margin_left = 266.847
+margin_top = 108.366
+margin_right = 271.847
+margin_bottom = 129.366
+custom_fonts/font = SubResource( 3 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="19" type="Label" parent="Labels"]
+margin_left = 258.859
+margin_top = 111.729
+margin_right = 263.859
+margin_bottom = 132.729
+custom_fonts/font = SubResource( 3 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="20" type="Label" parent="Labels"]
+margin_left = 251.11
+margin_top = 115.68
+margin_right = 256.11
+margin_bottom = 136.68
+custom_fonts/font = SubResource( 3 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="21" type="Label" parent="Labels"]
+margin_left = 242.86
+margin_top = 119.555
+margin_right = 247.86
+margin_bottom = 140.555
+custom_fonts/font = SubResource( 3 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="22" type="Label" parent="Labels"]
+margin_left = 235.213
+margin_top = 123.642
+margin_right = 240.213
+margin_bottom = 144.642
+custom_fonts/font = SubResource( 3 )
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="23" type="Label" parent="Labels"]
+margin_left = 226.221
+margin_top = 128.359
+margin_right = 231.221
+margin_bottom = 149.359
+custom_fonts/font = SubResource( 3 )
+text = "7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="24" type="Label" parent="Labels"]
+margin_left = 219.353
+margin_top = 132.242
+margin_right = 224.353
+margin_bottom = 153.242
+custom_fonts/font = SubResource( 3 )
+text = "8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="25" type="Label" parent="Labels"]
+margin_left = 210.795
+margin_top = 136.191
+margin_right = 215.795
+margin_bottom = 157.191
+custom_fonts/font = SubResource( 3 )
+text = "9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Labels"]
+margin_left = 203.0
+margin_top = 141.0
+margin_right = 205.0
+margin_bottom = 158.0
+custom_fonts/font = SubResource( 4 )
+text = "1
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Labels"]
+margin_left = 205.461
+margin_top = 139.669
+margin_right = 245.461
+margin_bottom = 156.669
+custom_fonts/font = SubResource( 4 )
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Labels"]
+margin_left = 194.874
+margin_top = 144.817
+margin_right = 200.874
+margin_bottom = 161.817
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Labels"]
+margin_left = 196.558
+margin_top = 144.396
+margin_right = 202.558
+margin_bottom = 161.396
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Labels"]
+margin_left = 186.0
+margin_top = 149.0
+margin_right = 188.0
+margin_bottom = 166.0
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label10" type="Label" parent="Labels"]
+margin_left = 188.255
+margin_top = 148.442
+margin_right = 194.255
+margin_bottom = 165.442
+custom_fonts/font = SubResource( 4 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Labels"]
+margin_left = 178.16
+margin_top = 152.617
+margin_right = 184.16
+margin_bottom = 169.617
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="Labels"]
+margin_left = 179.785
+margin_top = 152.492
+margin_right = 185.785
+margin_bottom = 169.492
+custom_fonts/font = SubResource( 4 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Labels"]
+margin_left = 170.318
+margin_top = 157.121
+margin_right = 176.318
+margin_bottom = 174.121
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label12" type="Label" parent="Labels"]
+margin_left = 172.318
+margin_top = 156.121
+margin_right = 178.318
+margin_bottom = 173.121
+custom_fonts/font = SubResource( 4 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Labels"]
+margin_left = 162.18
+margin_top = 160.909
+margin_right = 168.18
+margin_bottom = 177.909
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label13" type="Label" parent="Labels"]
+margin_left = 164.387
+margin_top = 159.648
+margin_right = 170.387
+margin_bottom = 176.648
+custom_fonts/font = SubResource( 4 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Labels"]
+margin_left = 154.37
+margin_top = 165.055
+margin_right = 160.37
+margin_bottom = 182.055
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label14" type="Label" parent="Labels"]
+margin_left = 155.868
+margin_top = 163.837
+margin_right = 161.868
+margin_bottom = 180.837
+custom_fonts/font = SubResource( 4 )
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 304.0
+margin_bottom = 170.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Fade In" = SubResource( 5 )
+"anims/Fade Out" = SubResource( 6 )
+"anims/Red Alert" = SubResource( 7 )
+"anims/Yellow Alert" = SubResource( 8 )
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="Yellow Alert" type="Sprite" parent="."]
+position = Vector2( 148.798, -2.05885 )
+texture = ExtResource( 13 )
+
+[node name="Red Alert" type="Sprite" parent="."]
+position = Vector2( 148.806, -3.059 )
+texture = ExtResource( 14 )
+[connection signal="DisplayTroopList" from="." to="Screen/Troop List" method="DisplayTroopList"]
+[connection signal="DisplayTroopStats" from="." to="Screen/TroopDisplay" method="DisplayStats"]
+[connection signal="UpdateTroopList" from="." to="Screen/Troop List" method="UpdateTroopList"]
+[connection signal="button_down" from="Screen/Buttons/Attack Button" to="." method="_on_Attack_Button_down"]
+[connection signal="button_down" from="Screen/Buttons/Walk Button" to="." method="_on_Walk_Button_down"]
+[connection signal="button_down" from="Screen/Buttons/End Button" to="." method="_on_End_Button_down"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
+
+[editable path="Screen"]

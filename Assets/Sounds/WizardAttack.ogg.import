@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/WizardAttack.ogg-be02888625160053552c8e1b81c7195a.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/WizardAttack.ogg"
+dest_files=[ "res://.import/WizardAttack.ogg-be02888625160053552c8e1b81c7195a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

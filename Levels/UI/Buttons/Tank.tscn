@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/UI/Tank Logo Hovered.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Tank Logo Selected.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/Tank Logo.png" type="Texture" id=3]
+
+[node name="Tank" type="TextureButton"]
+margin_left = 0.178192
+margin_top = 0.294327
+margin_right = 11.1782
+margin_bottom = 11.2943
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

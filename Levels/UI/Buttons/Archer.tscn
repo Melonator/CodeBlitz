@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/UI/Archer Logo Selected.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Archer Logo Hovered.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/Archer Logo.png" type="Texture" id=3]
+
+[node name="Archer" type="TextureButton"]
+margin_left = 0.220222
+margin_top = 0.278794
+margin_right = 11.2201
+margin_bottom = 11.2788
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
