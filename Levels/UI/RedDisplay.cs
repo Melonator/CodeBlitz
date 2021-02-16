@@ -1,8 +1,7 @@
+using CodeBlitz.Assets.UI.Troops;
 using Godot;
-using System;
-using CodeCombat.Entity;
 
-namespace CodeCombat.TroopUI
+namespace CodeBlitz.Levels.UI
 {
     public class RedDisplay : Control
     {        
@@ -32,7 +31,7 @@ namespace CodeCombat.TroopUI
                 GetNode<Position2D>("DisplayPosition").GetChild(0).QueueFree();
 
             
-            var entity = GetInstance(troop).Instance() as Display.Display;
+            var entity = GetInstance(troop).Instance() as Display;
             GetNode<Label>("Position2D/HpLabel").Text = $"{hp}";
             GetNode<Label>("Position2D2/DmgLabel").Text = $"{entity.Damage}";
             GetNode<Label>("Position2D3/MoveLabel").Text = $"{moves}";

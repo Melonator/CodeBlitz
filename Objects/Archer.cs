@@ -1,11 +1,7 @@
-using Godot;
-using System;
-using CodeCombat.Entity;
-using CodeCombat.World;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using Godot;
 
-namespace CodeCombat.Entity.Archer
+namespace CodeBlitz.Objects
 {
     public class Archer : Entity
     {

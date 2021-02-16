@@ -137,6 +137,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Fade Out" = SubResource( 3 )
+
 [connection signal="timeout" from="MenuTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="timeout" from="StartTimer2" to="." method="_on_StartTimer2_timeout"]
