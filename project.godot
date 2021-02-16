@@ -14,10 +14,6 @@ config/name="CodeBlitz"
 run/main_scene="res://Levels/MainMenu.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-Global="*res://Levels/Troops.cs"
-
 [display]
 
 window/size/width=304
