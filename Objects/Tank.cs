@@ -1,10 +1,6 @@
 using Godot;
-using System;
-using CodeCombat.Entity;
-using CodeCombat.World;
-using System.Collections.Generic;
 
-namespace CodeCombat.Entity.Tank
+namespace CodeBlitz.Objects
 {
     public class Tank : Entity
     {

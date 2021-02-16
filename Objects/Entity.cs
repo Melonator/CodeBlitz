@@ -1,10 +1,11 @@
-using Godot;
 using System;
-using CodeCombat.World;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CodeBlitz.Levels;
+using Godot;
+using TileMap = CodeBlitz.Levels.TileMap;
 
-namespace CodeCombat.Entity
+namespace CodeBlitz.Objects
 {
     public class Entity : Position2D
     {

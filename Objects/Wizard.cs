@@ -1,11 +1,8 @@
-using Godot;
-using System;
-using CodeCombat.Entity;
-using CodeCombat.World;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Godot;
 
-namespace CodeCombat.Entity.Wizard
+namespace CodeBlitz.Objects
 {
     public class Wizard : Entity
     {

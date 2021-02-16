@@ -1,8 +1,7 @@
-using Godot;
-using System;
 using System.Collections.Generic;
+using Godot;
 
-namespace CodeCombat.World
+namespace CodeBlitz.Levels
 {
     public class WorldManager : TileMap
     {

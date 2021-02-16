@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-namespace CodeCombat.Display
+namespace CodeBlitz.Assets.UI.Troops
 {
     public class Display : Node
     {

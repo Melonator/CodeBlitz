@@ -1,8 +1,4 @@
-using Godot;
-using System;
-using System.Collections.Generic;
-
-namespace CodeCombat.Globals
+namespace CodeBlitz.Levels
 {
     public static class Troops
     {

@@ -1,9 +1,7 @@
+using CodeBlitz.Assets.UI.Troops;
 using Godot;
-using System;
-using CodeCombat.Globals;
-using CodeCombat.Display;
 
-namespace CodeCombat.TroopUI
+namespace CodeBlitz.Levels.UI
 {
     public class TroopList : Control
     {
@@ -30,7 +28,7 @@ namespace CodeCombat.TroopUI
                 int j = 1;
                 for(int i = 3; i >= 0; i--, j++)
                 {
-                    var entity = GetInstance(Troops.RedTeam[i]).Instance() as CodeCombat.Display.Display;
+                    var entity = GetInstance(Troops.RedTeam[i]).Instance() as Display;
                     GetNode<Position2D>($"{j}").AddChild(entity);
                 }
             }
@@ -40,7 +38,7 @@ namespace CodeCombat.TroopUI
                 int j = 1;
                 for(int i = 3; i >= 0; i--, j++)
                 {
-                    var entity = GetInstance(Troops.YellowTeam[i]).Instance() as CodeCombat.Display.Display;
+                    var entity = GetInstance(Troops.YellowTeam[i]).Instance() as Display;
                     GetNode<Position2D>($"{j}").AddChild(entity);
                 }
             }

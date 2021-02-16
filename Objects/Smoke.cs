@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-namespace CodeCombat.Entity
+namespace CodeBlitz.Objects
 {
     public class Smoke : Node2D
     {
