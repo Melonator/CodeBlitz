@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Levels/ArenaManager.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Tiles/ObstacleTile.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Levels/Highlight.cs" type="Script" id=8]
 [ext_resource path="res://Assets/Tiles/ActorTile.png" type="Texture" id=9]
 [ext_resource path="res://Levels/UI/MainUI.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Levels/UI/BasicRed.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Sounds/Explosion.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Assets/UI/Yellow Alert.png" type="Texture" id=13]
 [ext_resource path="res://Assets/UI/Red Alert.png" type="Texture" id=14]
@@ -165,9 +164,6 @@ margin_bottom = 0.0
 
 [node name="Troop List" parent="Screen" instance=ExtResource( 4 )]
 
-[node name="TroopDisplay" parent="Screen" instance=ExtResource( 11 )]
-visible = false
-
 [node name="Labels" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -218,10 +214,23 @@ __meta__ = {
 }
 
 [node name="4" type="Label" parent="Labels"]
-margin_left = 47.3414
-margin_top = 97.7662
-margin_right = 58.3414
-margin_bottom = 138.766
+margin_left = 46.9441
+margin_top = 98.5608
+margin_right = 57.9441
+margin_bottom = 139.561
+custom_fonts/font = SubResource( 2 )
+text = "d"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="5" type="Label" parent="Labels"]
+margin_left = 54.6598
+margin_top = 103.067
+margin_right = 65.6598
+margin_bottom = 144.067
 custom_fonts/font = SubResource( 2 )
 text = "e"
 align = 1
@@ -230,26 +239,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="5" type="Label" parent="Labels"]
-margin_left = 53.8652
-margin_top = 102.537
-margin_right = 64.8652
-margin_bottom = 143.537
+[node name="6" type="Label" parent="Labels"]
+margin_left = 62.8676
+margin_top = 105.562
+margin_right = 73.8676
+margin_bottom = 146.562
 custom_fonts/font = SubResource( 2 )
 text = "f"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="6" type="Label" parent="Labels"]
-margin_left = 62.3379
-margin_top = 105.297
-margin_right = 73.3379
-margin_bottom = 146.297
-custom_fonts/font = SubResource( 2 )
-text = "g"
 align = 1
 valign = 1
 __meta__ = {
@@ -262,7 +258,7 @@ margin_top = 110.402
 margin_right = 82.1095
 margin_bottom = 151.402
 custom_fonts/font = SubResource( 2 )
-text = "h"
+text = "g"
 align = 1
 valign = 1
 __meta__ = {
@@ -270,12 +266,12 @@ __meta__ = {
 }
 
 [node name="8" type="Label" parent="Labels"]
-margin_left = 78.2286
+margin_left = 78.6259
 margin_top = 114.882
-margin_right = 89.2286
+margin_right = 89.6259
 margin_bottom = 155.882
 custom_fonts/font = SubResource( 2 )
-text = "i"
+text = "h"
 align = 1
 valign = 1
 __meta__ = {
@@ -283,12 +279,12 @@ __meta__ = {
 }
 
 [node name="9" type="Label" parent="Labels"]
-margin_left = 85.2728
-margin_top = 118.247
-margin_right = 96.2728
-margin_bottom = 159.247
+margin_left = 87.1269
+margin_top = 118.115
+margin_right = 98.1269
+margin_bottom = 159.115
 custom_fonts/font = SubResource( 2 )
-text = "j"
+text = "i"
 align = 1
 valign = 1
 __meta__ = {
@@ -301,7 +297,7 @@ margin_top = 122.078
 margin_right = 105.689
 margin_bottom = 163.078
 custom_fonts/font = SubResource( 2 )
-text = "k"
+text = "j"
 align = 1
 valign = 1
 __meta__ = {
@@ -309,12 +305,12 @@ __meta__ = {
 }
 
 [node name="11" type="Label" parent="Labels"]
-margin_left = 101.9
-margin_top = 126.573
-margin_right = 112.9
-margin_bottom = 167.573
+margin_left = 102.695
+margin_top = 125.911
+margin_right = 113.695
+margin_bottom = 166.911
 custom_fonts/font = SubResource( 2 )
-text = "l"
+text = "k"
 align = 1
 valign = 1
 __meta__ = {
@@ -322,12 +318,12 @@ __meta__ = {
 }
 
 [node name="12" type="Label" parent="Labels"]
-margin_left = 110.422
+margin_left = 110.687
 margin_top = 130.352
-margin_right = 121.422
+margin_right = 121.687
 margin_bottom = 171.352
 custom_fonts/font = SubResource( 2 )
-text = "m"
+text = "l"
 align = 1
 valign = 1
 __meta__ = {
@@ -340,7 +336,7 @@ margin_top = 133.877
 margin_right = 129.662
 margin_bottom = 174.877
 custom_fonts/font = SubResource( 2 )
-text = "n"
+text = "m"
 align = 1
 valign = 1
 __meta__ = {
@@ -348,10 +344,23 @@ __meta__ = {
 }
 
 [node name="14" type="Label" parent="Labels"]
-margin_left = 126.341
+margin_left = 126.871
 margin_top = 137.623
-margin_right = 137.341
+margin_right = 137.871
 margin_bottom = 178.623
+custom_fonts/font = SubResource( 2 )
+text = "n"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="15" type="Label" parent="Labels"]
+margin_left = 135.003
+margin_top = 140.807
+margin_right = 146.003
+margin_bottom = 181.807
 custom_fonts/font = SubResource( 2 )
 text = "o"
 align = 1
@@ -360,26 +369,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="15" type="Label" parent="Labels"]
-margin_left = 134.301
-margin_top = 140.807
-margin_right = 145.301
-margin_bottom = 181.807
-custom_fonts/font = SubResource( 2 )
-text = "p"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="16" type="Label" parent="Labels"]
-margin_left = 142.208
+margin_left = 143.05
 margin_top = 145.038
-margin_right = 153.208
+margin_right = 154.05
 margin_bottom = 186.038
 custom_fonts/font = SubResource( 2 )
-text = "q"
+text = "p"
 align = 1
 valign = 1
 __meta__ = {
@@ -643,6 +639,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 304.0
 margin_bottom = 170.0
 color = Color( 0, 0, 0, 1 )
@@ -666,12 +663,8 @@ texture = ExtResource( 13 )
 [node name="Red Alert" type="Sprite" parent="."]
 position = Vector2( 148.806, -3.059 )
 texture = ExtResource( 14 )
-[connection signal="DisplayTroopList" from="." to="Screen/Troop List" method="DisplayTroopList"]
-[connection signal="DisplayTroopStats" from="." to="Screen/TroopDisplay" method="DisplayStats"]
-[connection signal="UpdateTroopList" from="." to="Screen/Troop List" method="UpdateTroopList"]
-[connection signal="button_down" from="Screen/Buttons/Attack Button" to="." method="_on_Attack_Button_down"]
-[connection signal="button_down" from="Screen/Buttons/Walk Button" to="." method="_on_Walk_Button_down"]
-[connection signal="button_down" from="Screen/Buttons/End Button" to="." method="_on_End_Button_down"]
+
+[connection signal="Enter" from="Screen" to="." method="_on_Screen_Enter"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
 
 [editable path="Screen"]

@@ -97,7 +97,7 @@ anims/Bounce = SubResource( 1 )
 position = Vector2( 0, -5 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="MovementTimer" type="Timer" parent="."]
@@ -109,4 +109,5 @@ anims/Damaged = SubResource( 3 )
 
 [node name="HitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 25 )
+
 [connection signal="timeout" from="MovementTimer" to="." method="_on_MovementTimer_timeout"]
