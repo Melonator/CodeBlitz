@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/UI/RedDisplay.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Jeebz-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/UI/Red UI.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 2 )
+
+[node name="TroopDisplay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.33371
+margin_top = 0.166855
+margin_right = -0.33371
+margin_bottom = 0.166855
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 33.9053, 15.1331 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="DisplayPosition" type="Position2D" parent="."]
+position = Vector2( 43.767, 14.2323 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 21.8967, 11.7768 )
+
+[node name="HpLabel" type="Label" parent="Position2D"]
+margin_left = -2.27065
+margin_top = -1.86768
+margin_right = 31.7294
+margin_bottom = 35.1323
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "50
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 21.9039, 19.9457 )
+
+[node name="DmgLabel" type="Label" parent="Position2D2"]
+margin_left = -2.32004
+margin_top = -1.99841
+margin_right = 31.68
+margin_bottom = 31.0016
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 2 )
+text = "10
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 11.2898, 11.7818 )
+
+[node name="MoveLabel" type="Label" parent="Position2D3"]
+margin_left = -2.32004
+margin_top = -1.99841
+margin_right = 31.68
+margin_bottom = 31.0016
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 2 )
+text = "2
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = 40.3207
+margin_top = 18.5782
+margin_right = 74.3207
+margin_bottom = 32.5782
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Jimmy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

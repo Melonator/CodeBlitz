@@ -35,6 +35,7 @@ namespace CodeBlitz.Levels
         [Signal] public delegate void DisplayTroopStats(int hp, int moves, string troop, string team);
         public override void _Ready()
         {
+            GD.Print("Bruh");
             GetNode<AnimationPlayer>("AnimationPlayer").Play("Fade In");
             _playerHighlight = GetNode<PlayerHighlight>("PlayerHighlight");
             _worldHighlight = GetNode<Highlight>("WorldHighlight");
@@ -139,7 +140,6 @@ namespace CodeBlitz.Levels
                     ResetRound();
                 }
             }
-            _worldHighlight.Clear();
         }
 
         private void _on_Screen_Enter(string token1, string token2, string token3)
@@ -149,8 +149,11 @@ namespace CodeBlitz.Levels
                 var entity = GetEntity(token2, _attacker);
                 if(entity != null)
                 {
-                    var vector = StringToVector(token3);
-                    entity.Move(_worldManager.MapToWorld(vector));
+                    if(entity.MoveCount > 0)
+                    {
+                        var vector = StringToVector(token3);
+                        entity.Move(_worldManager.MapToWorld(vector));
+                    }
                 }
             }
             else if (token1 == "attack")
@@ -158,7 +161,10 @@ namespace CodeBlitz.Levels
                 var attacker = GetEntity(token2, _attacker);
                 var defender = GetEntity(token3, _defender);
                 if(attacker != null && defender != null)
-                    attacker.Attack(defender);
+                {
+                    if(attacker.MoveCount > 0)
+                        attacker.Attack(defender);
+                }
                 _worldHighlight.Clear();
             }
             else if (token1 == "endturn")
