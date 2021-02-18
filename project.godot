@@ -10,13 +10,9 @@ config_version=4
 
 [application]
 
-config/name="Code Combat"
+config/name="CodeBlitz"
 run/main_scene="res://Levels/MainMenu.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-Global="*res://Levels/Troops.cs"
 
 [display]
 
