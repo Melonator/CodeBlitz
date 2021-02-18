@@ -51,12 +51,12 @@ namespace CodeBlitz.Levels
             StreamReader sr = new StreamReader("Troop Names.txt");
             string line;
             while ((line = sr.ReadLine()) != null)
-            {
                 _troopNames.Add(line);
-            }
+            sr.Close();
         }
         public override void _Input(InputEvent @event)
         {
+            //Spawn code
             if(isSpawn && @event is InputEventMouse eventKey && eventKey.IsPressed())
             {
                 var position = _worldManager.WorldToMap(eventKey.Position);
@@ -110,9 +110,10 @@ namespace CodeBlitz.Levels
                 }
             }
         }
+
         private void InvalidMove()
         {
-            ResetTiles();
+            _worldHighlight.Clear();
         }
 
         private void EndTurn()
@@ -138,10 +139,7 @@ namespace CodeBlitz.Levels
                     ResetRound();
                 }
             }
-            GetNode<TextureButton>("Screen/Buttons/Attack Button").Disabled = true;
-            GetNode<TextureButton>("Screen/Buttons/Walk Button").Disabled = true;
-            GetNode<TextureButton>("Screen/Buttons/End Button").Disabled = true;
-            ResetTiles();
+            _worldHighlight.Clear();
         }
 
         private void _on_Screen_Enter(string token1, string token2, string token3)
@@ -161,6 +159,7 @@ namespace CodeBlitz.Levels
                 var defender = GetEntity(token3, _defender);
                 if(attacker != null && defender != null)
                     attacker.Attack(defender);
+                _worldHighlight.Clear();
             }
             else if (token1 == "endturn")
             {
@@ -195,12 +194,9 @@ namespace CodeBlitz.Levels
 
         private void _end_Game(string team)
         {
-            ResetTiles();
+            _worldHighlight.Clear();
             GetNode<ColorRect>("ColorRect").Show();
             Troops.Winner = team;
-            GetNode<TextureButton>("Screen/Buttons/Attack Button").Disabled = true;
-            GetNode<TextureButton>("Screen/Buttons/Walk Button").Disabled = true;
-            GetNode<TextureButton>("Screen/Buttons/End Button").Disabled = true;
             GetNode<AnimationPlayer>("AnimationPlayer").Play("Fade Out");
         }
 
@@ -340,14 +336,6 @@ namespace CodeBlitz.Levels
             {
                 e.MoveCount = e.MaxMoveCount;
             }
-            GetNode<TextureButton>("Screen/Buttons/Attack Button").Disabled = true;
-            GetNode<TextureButton>("Screen/Buttons/Walk Button").Disabled = true;
-            GetNode<TextureButton>("Screen/Buttons/End Button").Disabled = true;
-        }
-
-        private void ResetTiles()
-        {
-            _worldHighlight.Clear();
         }
     }
 }

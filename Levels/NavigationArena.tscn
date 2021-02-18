@@ -639,7 +639,6 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_right = 304.0
 margin_bottom = 170.0
 color = Color( 0, 0, 0, 1 )
@@ -664,6 +663,8 @@ texture = ExtResource( 13 )
 position = Vector2( 148.806, -3.059 )
 texture = ExtResource( 14 )
 
+[connection signal="DisplayTroopList" from="." to="Screen/Troop List" method="DisplayTroopList"]
+[connection signal="UpdateTroopList" from="." to="Screen/Troop List" method="UpdateTroopList"]
 [connection signal="Enter" from="Screen" to="." method="_on_Screen_Enter"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
 
