@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/characters/basic/basic_sword_idle_03.png" type="Texture" id=1]
 [ext_resource path="res://Assets/characters/basic/basic_sword_attack_07.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://Assets/characters/basic/basic_sword_run_02.png" type="Texture" id=23]
 [ext_resource path="res://Assets/UI/Arrow_UI.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Sounds/Hit.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Assets/Jeebz-Regular.ttf" type="DynamicFontData" id=26]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Bounce"
@@ -76,6 +77,12 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -5 ), Vector2( 2, -5 ), Vector2( -2, -5 ), Vector2( 2, -5 ), Vector2( -2, -5 ), Vector2( 2, -5 ), Vector2( -2, -5 ), Vector2( 0, -5 ) ]
 }
 
+[sub_resource type="DynamicFont" id=4]
+size = 6
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
+
 [node name="Basic" type="Position2D"]
 script = ExtResource( 13 )
 Health = 10
@@ -97,7 +104,7 @@ anims/Bounce = SubResource( 1 )
 position = Vector2( 0, -5 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="MovementTimer" type="Timer" parent="."]
@@ -109,4 +116,18 @@ anims/Damaged = SubResource( 3 )
 
 [node name="HitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 25 )
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = -10.0
+margin_top = -17.0
+margin_right = 6.0
+margin_bottom = -3.0
+custom_fonts/font = SubResource( 4 )
+text = "john"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="timeout" from="MovementTimer" to="." method="_on_MovementTimer_timeout"]

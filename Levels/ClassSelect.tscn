@@ -276,6 +276,7 @@ __meta__ = {
 
 [node name="SelectPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
 [connection signal="mouse_entered" from="Classes/Basic" to="Players" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Classes/Basic" to="Players" method="_on_Basic_pressed"]
 [connection signal="mouse_entered" from="Classes/Archer" to="Players" method="_on_button_mouse_entered"]

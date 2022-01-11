@@ -21,7 +21,6 @@ namespace CodeBlitz.Levels.UI
 
         private void DisplayStats(int hp, int moves, string troop, string team)
         {
-            Show();
             if(team == "Red")
                 GetNode<Sprite>("Sprite").Texture = ResourceLoader.Load("res://Assets/UI/Red UI.png") as Texture;
             else
